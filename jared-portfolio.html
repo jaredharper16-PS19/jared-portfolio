@@ -70,11 +70,13 @@
   .links a:hover { color: var(--ink); text-decoration: none; }
 
   /* Hero */
-  .hero { padding: 72px 0 64px; }
-  .hero-grid { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
+  .hero { padding: 64px 0 64px; text-align: center; }
+  .hero-grid { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .hero .lede { margin-left: auto; margin-right: auto; }
+  .hero .cta { justify-content: center; }
   .avatar {
-    width: 168px; height: 168px; border-radius: 28px; object-fit: cover; object-position: center 25%;
-    box-shadow: var(--shadow); background: var(--surface);
+    width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center 25%;
+    box-shadow: var(--shadow); background: var(--surface); border: 4px solid var(--surface);
   }
   .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 4px 0 14px; }
   h1 {
@@ -96,14 +98,37 @@
 
   /* Tool strip */
   .tools { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; }
-  .tools .wrap { display: flex; align-items: center; gap: 12px 28px; flex-wrap: wrap; }
+  .tools .wrap { display: flex; align-items: center; justify-content: center; gap: 12px 28px; flex-wrap: wrap; }
+  .tools ul { justify-content: center; }
   .tools p { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
   .tools ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
   .tools li { font-weight: 600; color: var(--ink-2); font-size: 15px; }
 
   /* Sections */
   section { padding: 80px 0; }
-  .sec-head { margin-bottom: 36px; max-width: 660px; }
+  .sec-head { margin: 0 auto 36px; max-width: 660px; text-align: center; }
+
+  /* Tabs */
+  .tabs {
+    display: flex; justify-content: center; gap: 4px; margin: 0 auto 36px; padding: 4px;
+    width: fit-content; max-width: 100%; background: var(--chip); border-radius: 14px;
+  }
+  .tabs button {
+    font: inherit; font-weight: 600; font-size: 15px; color: var(--muted); background: transparent;
+    border: 0; border-radius: 10px; padding: 10px 20px; cursor: pointer; min-height: 44px;
+  }
+  .tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+  .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .panel[hidden] { display: none; }
+  .tab-intro { text-align: center; color: var(--muted); max-width: 600px; margin: -16px auto 32px; }
+
+  /* Phone frame for personal app screenshots */
+  .phone {
+    width: 230px; margin: 0 auto 26px; border-radius: 30px; padding: 8px; background: #0b0d12;
+    box-shadow: var(--shadow); border: 1px solid var(--line);
+  }
+  .phone .view { border-radius: 23px; overflow: hidden; aspect-ratio: 9 / 17; background: #000; }
+  .phone .view img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
   .label { font-size: 12.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
   h2 { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 38px); line-height: 1.15; margin: 0 0 10px; letter-spacing: -.01em; }
   .sec-head p { margin: 0; color: var(--muted); }
@@ -152,6 +177,7 @@
   }
   .card .frame { margin-bottom: 26px; }
   .card .chips { margin-top: auto; }
+  .card .tag { align-self: flex-start; }
 
   /* Personal */
   .personal { margin-top: 56px; }
@@ -193,9 +219,10 @@
 
   /* Contact */
   .contact {
-    display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center;
-    background: var(--ink); color: var(--bg); border-radius: 24px; padding: 40px 44px;
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;
+    background: var(--ink); color: var(--bg); border-radius: 24px; padding: 48px 32px;
   }
+  .contact .cta { justify-content: center !important; }
   .contact img { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: center 20%; }
   .contact h2 { color: var(--bg); margin: 0 0 4px; }
   .contact p { margin: 0; color: color-mix(in srgb, var(--bg) 70%, var(--ink)); }
@@ -210,8 +237,7 @@
     .featured .frame .view { aspect-ratio: 4 / 3; }
     .duo, .side, .grid2, .how { grid-template-columns: 1fr; }
     .grid2 { gap: 40px; }
-    .contact { grid-template-columns: 1fr; text-align: left; padding: 32px 28px; }
-    .contact .cta { justify-content: flex-start; }
+    .contact { padding: 36px 24px; }
   }
   @media (max-width: 600px) {
     .wrap { padding: 0 16px; }
@@ -219,8 +245,9 @@
     .links .hide-sm { display: none; }
     .brand span { display: none; }
     .hero { padding: 40px 0 48px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
-    .avatar { width: 112px; height: 112px; border-radius: 22px; }
+    .hero-grid { gap: 20px; }
+    .avatar { width: 120px; height: 120px; }
+    .tabs button { padding: 10px 14px; font-size: 14px; }
     section { padding: 56px 0; }
     .card, .featured { padding: 20px; }
     .pbr div { grid-template-columns: 1fr; gap: 2px; }
@@ -262,7 +289,6 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z"/></svg>
           LinkedIn
         </a>
-        <a class="btn" href="#work">See my work</a>
       </div>
     </div>
   </div>
@@ -282,8 +308,16 @@
     <div class="sec-head">
       <p class="label">Selected work</p>
       <h2>Apps I've built and shipped</h2>
-      <p>Internal tools I designed, built, and deployed myself. Our operations team uses them to onboard agents, process leads, and track results.</p>
+      <p>Everything here I designed, built, and deployed myself.</p>
     </div>
+
+    <div class="tabs" role="tablist" aria-label="Projects">
+      <button role="tab" id="tab-pro" aria-controls="panel-pro" aria-selected="true">Professional Projects</button>
+      <button role="tab" id="tab-personal" aria-controls="panel-personal" aria-selected="false" tabindex="-1">Personal Projects</button>
+    </div>
+
+    <div class="panel" id="panel-pro" role="tabpanel" aria-labelledby="tab-pro">
+    <p class="tab-intro">Internal tools our operations team uses to onboard agents, process leads, and hold the team accountable to results.</p>
 
     <!-- FEATURED: Tech onboarding -->
     <article class="featured">
@@ -312,13 +346,13 @@
           <div class="view"><img src="images/opendoor-reporting.png" alt="Lead-to-close reporting dashboard"></div>
         </div>
         <span class="tag">Reporting &middot; Dashboard</span>
-        <h3>Lead-to-close reporting for a partner program</h3>
+        <h3>Lead-to-close reporting with agent KPIs</h3>
         <dl class="pbr">
           <div><dt>Problem</dt><dd>Partner lead data was split between two CRMs, so nobody could see where leads were stalling.</dd></div>
-          <div><dt>Built</dt><dd>A live dashboard that pulls from GoHighLevel and Follow Up Boss and follows every lead from intake to agent, appointment, and outcome.</dd></div>
-          <div><dt>Result</dt><dd><b>Leadership sees the full funnel in one place,</b> and appointments with no update are flagged for follow-up.</dd></div>
+          <div><dt>Built</dt><dd>A live dashboard that pulls from GoHighLevel and Follow Up Boss and tracks every lead from beginning to end: agent attached, appointment set, met, listed, under contract, and closed. It breaks the numbers down by agent, so each agent's KPIs are visible.</dd></div>
+          <div><dt>Result</dt><dd><b>Leadership can see exactly who is converting and who isn't,</b> then coach, retrain, or remove agents as the numbers dictate. Appointments with no update are flagged for follow-up.</dd></div>
         </dl>
-        <div class="chips"><span>GoHighLevel API</span><span>Follow Up Boss API</span><span>Data visualization</span><span>Vercel</span></div>
+        <div class="chips"><span>GoHighLevel API</span><span>Follow Up Boss API</span><span>Agent KPIs</span><span>Data visualization</span></div>
       </article>
 
       <!-- Ramsey CSV -->
@@ -328,36 +362,43 @@
           <div class="view"><img src="images/ramsey-csv.png" alt="Ramsey Solutions CSV lead processing app"></div>
         </div>
         <span class="tag">Operations &middot; Lead processing</span>
-        <h3>Partner lead import: CSV to CRM, automatically</h3>
+        <h3>Partner lead import: one CSV, three systems</h3>
         <dl class="pbr">
-          <div><dt>Problem</dt><dd>A referral partner sends client lists as spreadsheets, and each lead needs the right source before it reaches our CRMs.</dd></div>
-          <div><dt>Built</dt><dd>Upload the CSV and the app checks each lead against an editable agent roster, sets the lead source, and sends every lead by webhook into GoHighLevel and Follow Up Boss, rate limited so none get dropped.</dd></div>
-          <div><dt>Result</dt><dd><b>A manual import job became a drag and drop.</b></dd></div>
+          <div><dt>Problem</dt><dd>A referral partner sends client lists as spreadsheets. Every lead has to land in three systems, with the right agent and the right lead source, before anyone can work it.</dd></div>
+          <div><dt>Built</dt><dd>Upload the CSV once. The app matches each lead to an editable 48-agent roster, decides the lead source, and sends it by webhook into GoHighLevel, Follow Up Boss, and RMS, our internal Referral Management System. Sends are rate limited so no lead gets dropped.</dd></div>
+          <div><dt>Result</dt><dd><b>One upload does the work of three separate imports,</b> with the routing decisions already made.</dd></div>
         </dl>
-        <div class="chips"><span>CSV parsing</span><span>Webhooks</span><span>Rate limiting</span><span>GoHighLevel</span><span>Follow Up Boss</span></div>
+        <div class="chips"><span>CSV parsing</span><span>Webhooks</span><span>Rate limiting</span><span>GoHighLevel</span><span>Follow Up Boss</span><span>RMS</span></div>
       </article>
     </div>
+    </div>
 
-    <div class="personal">
-      <h4>On the side</h4>
-      <div class="side">
-        <div class="mini">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6c3.5 3.5 3.5 9.3 0 12.8M18.4 5.6c-3.5 3.5-3.5 9.3 0 12.8"/></svg></div>
-          <div>
-            <h5>Got Next</h5>
-            <p>An installable phone app for my weekly racquetball group: RSVPs, push notifications, score logging, quarterly seasons with ratings, awards, and head-to-head stats.</p>
-            <div class="chips"><span>Next.js</span><span>Supabase</span><span>Web Push</span></div>
-          </div>
-        </div>
-        <div class="mini">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-          <div>
-            <h5>Hidden Gold</h5>
-            <p>Reads my Spotify history, finds songs I've barely played by bands I love, and builds a playlist of them.</p>
-            <a href="https://hidden-gold.vercel.app" target="_blank" rel="noopener">View the live app &rarr;</a>
-          </div>
-        </div>
-      </div>
+    <div class="panel" id="panel-personal" role="tabpanel" aria-labelledby="tab-personal" hidden>
+    <p class="tab-intro">Outside of work I build for the things I love: my racquetball crew and my music. Same skills, just more fun.</p>
+    <div class="duo">
+      <article class="card">
+        <div class="phone"><div class="view"><img src="images/got-next.png" alt="Got Next app: all-time stats screen on iPhone"></div></div>
+        <span class="tag">Racquetball &middot; Phone app</span>
+        <h3>Got Next: an app for my racquetball crew</h3>
+        <dl class="pbr">
+          <div><dt>Problem</dt><dd>Our weekly racquetball group ran on a messy group text. Nobody knew who was coming, and nobody remembered who won.</dd></div>
+          <div><dt>Built</dt><dd>An app that installs on your phone's home screen. Players RSVP for game day, get push notifications, and log scores right from the court. It runs quarterly seasons with ratings, a leaderboard, rivalries, and awards like Clutch God and Iron Man.</dd></div>
+          <div><dt>Result</dt><dd><b>One place for the whole crew</b> to plan games and settle who's actually winning.</dd></div>
+        </dl>
+        <div class="chips"><span>Next.js</span><span>Supabase</span><span>Web Push</span><span>PWA</span><span>Vercel</span></div>
+      </article>
+      <article class="card">
+        <div class="phone"><div class="view"><img src="images/hidden-gold.png" alt="Hidden Gold app: The Vault screen"></div></div>
+        <span class="tag">Music &middot; Phone app</span>
+        <h3>Hidden Gold: deep cuts from bands I love</h3>
+        <dl class="pbr">
+          <div><dt>Problem</dt><dd>Streaming apps keep playing the same hits. I wanted the songs I've never really heard from bands I already love.</dd></div>
+          <div><dt>Built</dt><dd>An app that reads my Spotify history, finds every song I've played two times or fewer, and serves them to a playlist. Each band shows how many songs are left to dig, and it tracks a hit rate for the songs I end up saving.</dd></div>
+          <div><dt>Result</dt><dd><b>A playlist of new music I'm likely to love,</b> with the stats to prove it.</dd></div>
+        </dl>
+        <div class="chips"><span>Spotify API</span><span>Vercel</span><span>Vercel Blob</span><span>PWA</span></div>
+      </article>
+    </div>
     </div>
   </div>
 </section>
@@ -476,5 +517,27 @@
 
 <footer>&copy; 2026 Jared Harper</footer>
 
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('.tabs [role="tab"]');
+    function select(t) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on);
+        x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+          select(n); n.focus();
+        }
+      });
+    });
+  })();
+</script>
 </body>
 </html>
