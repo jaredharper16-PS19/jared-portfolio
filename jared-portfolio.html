@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jared Harper | IT Director</title>
-<meta name="description" content="Jared Harper, IT Director in the Phoenix area. I build the internal apps, automations, and reporting that run a real estate brokerage.">
+<meta name="description" content="Jared Harper, IT Director in Scottsdale, Arizona. I build the internal apps, automations, and reporting that run a real estate brokerage.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -100,9 +100,14 @@
   .tools { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; }
   .tools .wrap { display: flex; align-items: center; justify-content: center; gap: 12px 28px; flex-wrap: wrap; }
   .tools ul { justify-content: center; }
-  .tools p { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-  .tools ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
-  .tools li { font-weight: 600; color: var(--ink-2); font-size: 15px; }
+  .tools .wrap { flex-direction: column; gap: 14px; }
+  .tier { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 14px; }
+  .tier p { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); min-width: 92px; text-align: right; }
+  .tools ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tools li { font-weight: 600; color: var(--ink-2); font-size: 14.5px; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); }
+  .tools li.lvl-expert { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); display: inline-flex; align-items: center; gap: 6px; }
+  .tools li.lvl-expert::before { content: ""; width: 12px; height: 12px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6L12 2Z'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6L12 2Z'/%3E%3C/svg%3E") center/contain no-repeat; }
+  .tier-note { margin: 0; font-size: 14px; color: var(--muted); text-align: center; }
 
   /* Sections */
   section { padding: 80px 0; }
@@ -165,6 +170,10 @@
     padding: 44px; box-shadow: var(--shadow); margin-bottom: 28px;
   }
   .featured h3 { font-size: clamp(26px, 3vw, 32px); }
+  .featured.row { padding: 36px 40px; }
+  .featured.row h3 { font-size: clamp(23px, 2.6vw, 27px); }
+  .featured.row .frame .view { aspect-ratio: auto; }
+  .featured.row .frame .view img { height: auto; }
   .featured .frame .view { aspect-ratio: 4 / 5; }
   .flag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
   .flag svg { width: 14px; height: 14px; }
@@ -248,6 +257,9 @@
     .hero-grid { gap: 20px; }
     .avatar { width: 120px; height: 120px; }
     .tabs button { padding: 10px 14px; font-size: 14px; }
+    .tier { flex-direction: column; gap: 8px; }
+    .tier p { min-width: 0; text-align: center; }
+    .tools ul { justify-content: center; }
     section { padding: 56px 0; }
     .card, .featured { padding: 20px; }
     .pbr div { grid-template-columns: 1fr; gap: 2px; }
@@ -274,7 +286,7 @@
   <div class="wrap hero-grid">
     <img class="avatar" src="images/jared-headshot.jpg" alt="Jared Harper">
     <div>
-      <p class="eyebrow">IT Director &middot; Phoenix, AZ</p>
+      <p class="eyebrow">IT Director &middot; Scottsdale, AZ</p>
       <h1>I build the tools that keep a brokerage running.</h1>
       <p class="lede">
         I run technology for <strong>The Jason Mitchell Group</strong>, a large, multi-state real estate brokerage.
@@ -296,10 +308,15 @@
 
 <div class="tools">
   <div class="wrap">
-    <p>I work in</p>
-    <ul>
-      <li>GoHighLevel</li><li>Follow Up Boss</li><li>Zapier</li><li>Google Workspace</li><li>Vercel</li><li>Supabase</li>
-    </ul>
+    <div class="tier">
+      <p>Expert</p>
+      <ul><li class="lvl-expert">GoHighLevel</li><li class="lvl-expert">Zapier</li><li class="lvl-expert">Follow Up Boss</li></ul>
+    </div>
+    <div class="tier">
+      <p>Experienced</p>
+      <ul><li>GitHub</li><li>Vercel</li><li>Supabase</li><li>Google Workspace</li></ul>
+    </div>
+    <p class="tier-note">I use GitHub and Vercel to launch apps that speed up operations.</p>
   </div>
 </div>
 
@@ -324,11 +341,11 @@
       <div>
         <p class="flag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>Featured project</p>
         <span class="tag">Operations &middot; Onboarding</span>
-        <h3>Tech onboarding: one form sets up every new agent</h3>
+        <h3>Tech onboarding: one form sets up every new real estate agent</h3>
         <dl class="pbr">
-          <div><dt>Problem</dt><dd>Every new agent had to be set up by hand across several systems, with dozens of fields and permissions to get right each time.</dd></div>
-          <div><dt>Built</dt><dd>One form that creates the agent's GoHighLevel user with the right fields and permissions, links their records across our CRMs, and resizes and uploads their headshot. If something is missing, it emails the right operations person to finish it. Every user it creates is logged.</dd></div>
-          <div><dt>Result</dt><dd><b>Agent setup went from a checklist to a single form,</b> done the same way every time, with gaps flagged automatically.</dd></div>
+          <div><dt>Problem</dt><dd>Every new real estate agent who joined the brokerage had to be set up by hand across several systems, with dozens of fields and permissions to get right each time.</dd></div>
+          <div><dt>Built</dt><dd>One form that creates the real estate agent's GoHighLevel user with the right fields and permissions, links their records across our CRMs, and resizes and uploads their headshot. If something is missing, it emails the right operations person to finish it. Every user it creates is logged.</dd></div>
+          <div><dt>Result</dt><dd><b>Real estate agent setup went from a checklist to a single form,</b> done the same way every time, with gaps flagged automatically.</dd></div>
         </dl>
         <div class="chips"><span>GoHighLevel API</span><span>Follow Up Boss</span><span>Next.js</span><span>Supabase</span><span>Vercel</span></div>
       </div>
@@ -338,13 +355,8 @@
       </div>
     </article>
 
-    <div class="duo">
-      <!-- Opendoor reporting -->
-      <article class="card">
-        <div class="frame">
-          <div class="bar"><span></span><span></span><span></span></div>
-          <div class="view"><img src="images/opendoor-reporting.png" alt="Lead-to-close reporting dashboard"></div>
-        </div>
+      <article class="featured row">
+        <div>
         <span class="tag">Reporting &middot; Dashboard</span>
         <h3>Lead-to-close reporting with agent KPIs</h3>
         <dl class="pbr">
@@ -353,14 +365,14 @@
           <div><dt>Result</dt><dd><b>Leadership can see exactly who is converting and who isn't,</b> then coach, retrain, or remove agents as the numbers dictate. Appointments with no update are flagged for follow-up.</dd></div>
         </dl>
         <div class="chips"><span>GoHighLevel API</span><span>Follow Up Boss API</span><span>Agent KPIs</span><span>Data visualization</span></div>
-      </article>
-
-      <!-- Ramsey CSV -->
-      <article class="card">
-        <div class="frame">
-          <div class="bar"><span></span><span></span><span></span></div>
-          <div class="view"><img src="images/ramsey-csv.png" alt="Ramsey Solutions CSV lead processing app"></div>
         </div>
+      <div class="frame">
+          <div class="bar"><span></span><span></span><span></span></div>
+          <div class="view"><img src="images/opendoor-reporting.png" alt="Lead-to-close reporting dashboard"></div>
+        </div>
+      </article>
+      <article class="featured row">
+        <div>
         <span class="tag">Operations &middot; Lead processing</span>
         <h3>Partner lead import: one CSV, three systems</h3>
         <dl class="pbr">
@@ -369,8 +381,12 @@
           <div><dt>Result</dt><dd><b>One upload does the work of three separate imports,</b> with the routing decisions already made.</dd></div>
         </dl>
         <div class="chips"><span>CSV parsing</span><span>Webhooks</span><span>Rate limiting</span><span>GoHighLevel</span><span>Follow Up Boss</span><span>RMS</span></div>
+        </div>
+      <div class="frame">
+          <div class="bar"><span></span><span></span><span></span></div>
+          <div class="view"><img src="images/ramsey-csv.png" alt="Ramsey Solutions CSV lead processing app"></div>
+        </div>
       </article>
-    </div>
     </div>
 
     <div class="panel" id="panel-personal" role="tabpanel" aria-labelledby="tab-personal" hidden>
@@ -390,10 +406,10 @@
       <article class="card">
         <div class="phone"><div class="view"><img src="images/hidden-gold.png" alt="Hidden Gold app: The Vault screen"></div></div>
         <span class="tag">Music &middot; Phone app</span>
-        <h3>Hidden Gold: deep cuts from bands I love</h3>
+        <h3>Hidden Gold: Spotify couldn't do it, so I built it</h3>
         <dl class="pbr">
-          <div><dt>Problem</dt><dd>Streaming apps keep playing the same hits. I wanted the songs I've never really heard from bands I already love.</dd></div>
-          <div><dt>Built</dt><dd>An app that reads my Spotify history, finds every song I've played two times or fewer, and serves them to a playlist. Each band shows how many songs are left to dig, and it tracks a hit rate for the songs I end up saving.</dd></div>
+          <div><dt>Problem</dt><dd>I wanted to hear the songs I've never played from bands I already love. Spotify has no way to find them, and its recommendations keep serving the same hits.</dd></div>
+          <div><dt>Built</dt><dd>My own app on top of Spotify. It reads my listening history, finds every song I've played two times or fewer, and serves them to a playlist. Each band shows how many songs are left to dig, and it tracks a hit rate for the songs I end up saving.</dd></div>
           <div><dt>Result</dt><dd><b>A playlist of new music I'm likely to love,</b> with the stats to prove it.</dd></div>
         </dl>
         <div class="chips"><span>Spotify API</span><span>Vercel</span><span>Vercel Blob</span><span>PWA</span></div>
@@ -434,14 +450,16 @@
           </ul>
         </div>
         <div class="job past">
-          <h4>Medicare Sales Agent, e-TeleQuote Insurance</h4>
-          <p class="meta">Aug 2022 to Apr 2023</p>
+          <h4>Vivint</h4>
+          <p class="meta">Smart home installation and support</p>
           <ul>
-            <li>Ran client consultations and documented every interaction in CRM</li>
-            <li>Followed federal regulations to protect client interests</li>
-            <li>Handled high-volume remote client communication</li>
+            <li>Installed and configured smart home and security systems in customers' homes</li>
+            <li>Troubleshot devices, Wi-Fi, and connectivity problems on site</li>
+            <li>Updated firmware and system settings to keep equipment current</li>
+            <li>Taught customers how to use and get the most from their systems</li>
           </ul>
         </div>
+      </div>
       </div>
       <div>
         <div class="box">
@@ -466,7 +484,14 @@
         </div>
         <div class="box">
           <h4>Education</h4>
-          <b>Mesa Community College</b><small style="display:block;color:var(--muted);font-size:14px">Associate degree</small>
+          <div class="cert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+            <div><b>Western Governors University (WGU)</b><small>B.S. Information Technology &middot; currently enrolled</small></div>
+          </div>
+          <div class="cert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+            <div><b>Mesa Community College</b><small>Associate degree</small></div>
+          </div>
         </div>
       </div>
     </div>
@@ -482,8 +507,8 @@
     <div class="how">
       <div class="box">
         <div class="num">01</div>
-        <h5>Start with the problem</h5>
-        <p>I sit with the people doing the work, find where time and leads slip through, and build for that.</p>
+        <h5>Learn the process, then automate it</h5>
+        <p>I learn how the work actually gets done, step by step. Then I automate every part I can, so the team saves time, money, and frustration.</p>
       </div>
       <div class="box">
         <div class="num">02</div>
