@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jared Harper | IT Director</title>
-<meta name="description" content="Jared Harper, IT Director in Scottsdale, Arizona. I build the internal apps, automations, and reporting that run a real estate brokerage.">
+<meta name="description" content="Jared Harper, Jared Harper, Scottsdale, Arizona. I turn operations teams' manual work into automations, small internal apps, and reporting.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -222,6 +222,15 @@
   /* Approach */
   .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .how .box { margin: 0; }
+  .svc .ico { width: 46px; height: 46px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 14px; }
+  .svc .ico svg { width: 24px; height: 24px; }
+  .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .quote { margin: 0; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; }
+  @media (max-width: 880px) { .quotes { grid-template-columns: 1fr; } .quote { padding: 28px 22px; } }
+  .quote blockquote { margin: 0 0 18px; font-family: Fraunces, Georgia, serif; font-size: clamp(20px, 2.2vw, 24px); line-height: 1.4; color: var(--ink); text-wrap: balance; }
+  .quote cite { font-style: normal; font-weight: 600; color: var(--muted); font-size: 15px; }
+  .stat { display: inline-flex; align-items: baseline; gap: 8px; margin: 0 0 18px; padding: 10px 16px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .stat b { font-family: Fraunces, Georgia, serif; font-size: 26px; }
   .how .num { font-family: Fraunces, Georgia, serif; font-size: 30px; color: var(--accent); line-height: 1; margin-bottom: 14px; }
   .how h5 { font-size: 17px; margin: 0 0 8px; }
   .how p { margin: 0; color: var(--muted); font-size: 15px; }
@@ -266,6 +275,60 @@
     .btn { flex: 1 1 auto; justify-content: center; }
     .mini { padding: 20px; }
   }
+
+  /* Intake questionnaire */
+  [hidden] { display: none !important; }
+  button.btn { font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; }
+  .contact .addr { margin-top: 6px; font-size: 14px; }
+  .contact .addr span { user-select: all; font-weight: 600; }
+  dialog.intake {
+    width: min(620px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0; border: 1px solid var(--line);
+    border-radius: 20px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 64px rgba(0,0,0,.25);
+  }
+  dialog.intake::backdrop { background: rgba(10,12,18,.55); backdrop-filter: blur(3px); }
+  .intake form { display: flex; flex-direction: column; max-height: calc(100vh - 32px); }
+  .intake header { padding: 24px 60px 0 28px; }
+  .intake header h3 { margin: 0 0 6px; font-size: 24px; }
+  .intake header p { margin: 0; color: var(--muted); font-size: 15px; }
+  .intake .progress { display: flex; gap: 6px; margin-top: 18px; }
+  .intake .progress span { flex: 1; height: 4px; border-radius: 4px; background: var(--chip); }
+  .intake .progress span.on { background: var(--accent); }
+  .intake .body { padding: 22px 28px; overflow-y: auto; display: flex; flex-direction: column; gap: 18px; }
+  .intake .step[hidden] { display: none; }
+  .intake .step { display: flex; flex-direction: column; gap: 18px; }
+  .intake label.f { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14.5px; }
+  .intake label.f small { font-weight: 400; color: var(--muted); }
+  .intake input[type=text], .intake input[type=email], .intake textarea, .intake select {
+    font: inherit; font-weight: 400; font-size: 15px; color: var(--ink); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; width: 100%;
+  }
+  .intake textarea { min-height: 110px; resize: vertical; }
+  .intake input:focus, .intake textarea:focus, .intake select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .intake fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .intake legend { font-weight: 600; font-size: 14.5px; margin-bottom: 8px; padding: 0; }
+  .intake legend small { display: block; font-weight: 400; color: var(--muted); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts label { position: relative; }
+  .opts input { position: absolute; opacity: 0; inset: 0; }
+  .opts span { display: inline-block; padding: 7px 13px; border-radius: 99px; border: 1px solid var(--line); background: var(--bg); font-size: 14px; cursor: pointer; user-select: none; }
+  .opts input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .opts input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .intake .err { color: #c0392b; font-size: 14px; margin: 0; }
+  .intake .err[hidden] { display: none; }
+  .intake pre { margin: 0; white-space: pre-wrap; font: 13.5px/1.55 ui-monospace, Menlo, Consolas, monospace; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px; max-height: 260px; overflow: auto; }
+  .intake footer { display: flex; justify-content: space-between; gap: 10px; padding: 16px 28px 24px; border-top: 1px solid var(--line); }
+  .intake footer .right { display: flex; gap: 10px; margin-left: auto; }
+  .intake .x { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border-radius: 10px; border: 0; background: transparent; color: var(--muted); font-size: 22px; cursor: pointer; }
+  .intake .x:hover { background: var(--chip); }
+  @media (max-width: 600px) {
+    .row2 { grid-template-columns: 1fr; }
+    .intake header, .intake .body { padding-left: 20px; padding-right: 20px; }
+    .intake header { padding-right: 56px; }
+    .intake header h3 { font-size: 21px; }
+    .intake footer { padding: 14px 20px 20px; flex-wrap: wrap; }
+    .intake footer .btn { flex: 1 1 auto; justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -274,6 +337,7 @@
   <div class="wrap">
     <a class="brand" href="#top"><img src="images/jared-headshot.jpg" alt=""><span>Jared Harper</span></a>
     <div class="links">
+      <a class="hide-sm" href="#help">Services</a>
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
       <a class="hide-sm" href="#approach">Approach</a>
@@ -286,17 +350,17 @@
   <div class="wrap hero-grid">
     <img class="avatar" src="images/jared-headshot.jpg" alt="Jared Harper">
     <div>
-      <p class="eyebrow">IT Director &middot; Scottsdale, AZ</p>
-      <h1>I build the tools that keep a brokerage running.</h1>
+      <p class="eyebrow">Automation &amp; internal apps &middot; Scottsdale, AZ</p>
+      <h1>I turn your team's manual busywork into automations and small apps.</h1>
       <p class="lede">
-        I run technology for <strong>The Jason Mitchell Group</strong>, a large, multi-state real estate brokerage.
-        I find the work people are doing by hand, then build the apps, automations, and reports that do it for them.
+        By day I run technology for <strong>The Jason Mitchell Group</strong>, a large, multi-state real estate brokerage.
+        On the side, I help operations teams find the steps that eat their time, then build the solution that does the work for them.
       </p>
       <div class="cta">
-        <a class="btn primary" href="mailto:jared.harper16@gmail.com">
+        <button type="button" class="btn primary" data-open-intake>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          Email me
-        </a>
+          Tell me about your workflow
+        </button>
         <a class="btn" href="https://www.linkedin.com/in/jared-harper-0b05ba225/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z"/></svg>
           LinkedIn
@@ -320,6 +384,33 @@
   </div>
 </div>
 
+<section id="help" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Services</p>
+      <h2>How I can help</h2>
+      <p>I don't just build forms. I solve the problems that slow your team down.</p>
+    </div>
+    <div class="how">
+      <div class="box svc">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+        <h5>Automation builds</h5>
+        <p>Workflows in GoHighLevel, Zapier, and Follow Up Boss that move leads, update records, and send the right message at the right time, without anyone touching them.</p>
+      </div>
+      <div class="box svc">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3"/></svg></div>
+        <h5>Custom internal apps</h5>
+        <p>Small, focused web apps for the jobs your software can't handle: onboarding, imports, intake forms, and handoffs between systems.</p>
+      </div>
+      <div class="box svc">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <h5>Reporting dashboards</h5>
+        <p>Live dashboards that pull from your CRMs and show what leadership actually needs: conversion, follow-through, and who needs coaching.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
@@ -342,10 +433,11 @@
         <p class="flag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>Featured project</p>
         <span class="tag">Operations &middot; Onboarding</span>
         <h3>Tech onboarding: one form sets up every new real estate agent</h3>
+        <p class="stat"><b>20 min &rarr; 4 min</b> per new real estate agent</p>
         <dl class="pbr">
           <div><dt>Problem</dt><dd>Every new real estate agent who joined the brokerage had to be set up by hand across several systems, with dozens of fields and permissions to get right each time.</dd></div>
           <div><dt>Built</dt><dd>One form that creates the real estate agent's GoHighLevel user with the right fields and permissions, links their records across our CRMs, and resizes and uploads their headshot. If something is missing, it emails the right operations person to finish it. Every user it creates is logged.</dd></div>
-          <div><dt>Result</dt><dd><b>Real estate agent setup went from a checklist to a single form,</b> done the same way every time, with gaps flagged automatically.</dd></div>
+          <div><dt>Result</dt><dd><b>Setup dropped from 20 minutes to 4 minutes per real estate agent,</b> done the same way every time, with gaps flagged automatically.</dd></div>
         </dl>
         <div class="chips"><span>GoHighLevel API</span><span>Follow Up Boss</span><span>Next.js</span><span>Supabase</span><span>Vercel</span></div>
       </div>
@@ -374,11 +466,11 @@
       <article class="featured row">
         <div>
         <span class="tag">Operations &middot; Lead processing</span>
-        <h3>Partner lead import: one CSV, three systems</h3>
+        <h3>Partner lead import: from a messy chain to one upload</h3>
         <dl class="pbr">
-          <div><dt>Problem</dt><dd>A referral partner sends client lists as spreadsheets. Every lead has to land in three systems, with the right agent and the right lead source, before anyone can work it.</dd></div>
-          <div><dt>Built</dt><dd>Upload the CSV once. The app matches each lead to an editable 48-agent roster, decides the lead source, and sends it by webhook into GoHighLevel, Follow Up Boss, and RMS, our internal Referral Management System. Sends are rate limited so no lead gets dropped.</dd></div>
-          <div><dt>Result</dt><dd><b>One upload does the work of three separate imports,</b> with the routing decisions already made.</dd></div>
+          <div><dt>Problem</dt><dd>There was no real process. Partner leads were downloaded, emailed to a parsing inbox, and pushed through several more steps, each one needing manual fixes before leads reached the right agent.</dd></div>
+          <div><dt>Built</dt><dd>In about 20 minutes, I built and launched an app that replaced the whole chain. Upload the CSV once and it matches each lead to an editable 48-agent roster, decides the lead source, and sends it by webhook into GoHighLevel, Follow Up Boss, and RMS, our internal Referral Management System. Sends are rate limited so no lead gets dropped.</dd></div>
+          <div><dt>Result</dt><dd><b>A messy, multi-step chore became one documented upload</b> that anyone on the team can run. It saves time, but the bigger win is a real process where there wasn't one.</dd></div>
         </dl>
         <div class="chips"><span>CSV parsing</span><span>Webhooks</span><span>Rate limiting</span><span>GoHighLevel</span><span>Follow Up Boss</span><span>RMS</span></div>
         </div>
@@ -416,6 +508,19 @@
       </article>
     </div>
     </div>
+  </div>
+</section>
+
+<section id="quote" style="padding-bottom:0">
+  <div class="wrap quotes">
+    <figure class="quote">
+      <blockquote>&ldquo;We needed to scale quickly, and onboarding was our bottleneck. Jared audited our process and automated several steps, cutting setup for each new agent from 20 minutes to 4.&rdquo;</blockquote>
+      <figcaption><cite>Lauren, Director of Onboarding</cite></figcaption>
+    </figure>
+    <figure class="quote">
+      <blockquote>&ldquo;Jared was able to turn a weekly annoying task into a simple process that is well documented, easy to use, and simple to report on.&rdquo;</blockquote>
+      <figcaption><cite>Amanda Mali, VP of Communications</cite></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -529,16 +634,94 @@
     <div class="contact">
       <img src="images/jared-headshot.jpg" alt="">
       <div>
-        <h2>Let's talk</h2>
-        <p>Open to new roles and conversations about CRM, automation, and internal tools.</p>
+        <h2>Let's fix a workflow</h2>
+        <p>I take on a small number of side projects: automations, internal apps, and reporting for operations teams.</p>
+        <p class="addr">Or email me directly: <span>jared.harper16@gmail.com</span></p>
       </div>
       <div class="cta">
-        <a class="btn primary" href="mailto:jared.harper16@gmail.com">Email me</a>
+        <button type="button" class="btn primary" data-open-intake>Tell me about your workflow</button>
         <a class="btn" href="https://www.linkedin.com/in/jared-harper-0b05ba225/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
 </section>
+
+<dialog class="intake" id="intake" aria-labelledby="intake-title">
+  <form id="intake-form" novalidate>
+    <button type="button" class="x" data-close aria-label="Close">&times;</button>
+    <header>
+      <h3 class="serif" id="intake-title">Tell me about your workflow</h3>
+      <p id="intake-sub">Three quick steps. Your answers become an email to me, ready to send.</p>
+      <div class="progress" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+    </header>
+    <div class="body">
+      <div class="step" data-step="1">
+        <div class="row2">
+          <label class="f">Your name <input type="text" id="q-name" autocomplete="name" required></label>
+          <label class="f">Company <input type="text" id="q-company" autocomplete="organization"></label>
+        </div>
+        <label class="f">Your email <input type="email" id="q-email" autocomplete="email" required></label>
+        <label class="f">Your role <small>So I know who I'm talking to</small><input type="text" id="q-role" placeholder="Operations manager, owner, team lead..."></label>
+      </div>
+      <div class="step" data-step="2" hidden>
+        <label class="f">What process do you want fixed?
+          <small>Walk me through it step by step, the way your team does it today.</small>
+          <textarea id="q-process" required placeholder="Example: When a new client signs, someone copies their info from our form into the CRM, then emails the team, then adds them to a spreadsheet..."></textarea>
+        </label>
+        <div class="row2">
+          <label class="f">How often does it happen?
+            <select id="q-freq"><option value="">Choose one</option><option>Several times a day</option><option>Daily</option><option>A few times a week</option><option>Weekly</option><option>Monthly</option></select>
+          </label>
+          <label class="f">Time it takes each time
+            <select id="q-time"><option value="">Choose one</option><option>Under 5 minutes</option><option>5 to 15 minutes</option><option>15 to 30 minutes</option><option>30 to 60 minutes</option><option>Over an hour</option></select>
+          </label>
+        </div>
+        <label class="f">What goes wrong today? <small>Optional</small><input type="text" id="q-pain" placeholder="Typos, missed steps, slow handoffs, no reporting..."></label>
+      </div>
+      <div class="step" data-step="3" hidden>
+        <fieldset id="q-systems">
+          <legend>Which systems does it touch?<small>Pick all that apply.</small></legend>
+          <div class="opts">
+            <label><input type="checkbox" value="GoHighLevel"><span>GoHighLevel</span></label>
+            <label><input type="checkbox" value="Follow Up Boss"><span>Follow Up Boss</span></label>
+            <label><input type="checkbox" value="HubSpot"><span>HubSpot</span></label>
+            <label><input type="checkbox" value="Salesforce"><span>Salesforce</span></label>
+            <label><input type="checkbox" value="Google Sheets / Excel"><span>Google Sheets / Excel</span></label>
+            <label><input type="checkbox" value="Gmail / Outlook"><span>Gmail / Outlook</span></label>
+            <label><input type="checkbox" value="Online forms"><span>Online forms</span></label>
+            <label><input type="checkbox" value="Phone / texting"><span>Phone / texting</span></label>
+          </div>
+        </fieldset>
+        <fieldset id="q-tools">
+          <legend>What automation tools do you already use?</legend>
+          <div class="opts">
+            <label><input type="checkbox" value="Zapier"><span>Zapier</span></label>
+            <label><input type="checkbox" value="Make"><span>Make</span></label>
+            <label><input type="checkbox" value="Email parser (Parseur, Parsio...)"><span>Email parser (Parseur, Parsio...)</span></label>
+            <label><input type="checkbox" value="Power Automate"><span>Power Automate</span></label>
+            <label><input type="checkbox" value="CRM workflows"><span>CRM workflows</span></label>
+            <label><input type="checkbox" value="None yet"><span>None yet</span></label>
+          </div>
+        </fieldset>
+        <label class="f">Anything else? <small>Other systems, deadlines, or what a win looks like</small><input type="text" id="q-other"></label>
+      </div>
+      <div class="step" data-step="4" hidden>
+        <p style="margin:0">Here's your email. Open it in your email app to send it, or copy it and email <b>jared.harper16@gmail.com</b> yourself.</p>
+        <pre id="q-preview"></pre>
+        <p class="err" id="q-copied" hidden style="color:var(--accent)">Copied.</p>
+      </div>
+      <p class="err" id="q-err" hidden></p>
+    </div>
+    <footer>
+      <button type="button" class="btn" id="q-back" hidden>Back</button>
+      <div class="right">
+        <button type="button" class="btn" id="q-copy" hidden>Copy text</button>
+        <a class="btn primary" id="q-send" hidden href="#">Open in email app</a>
+        <button type="submit" class="btn primary" id="q-next">Next</button>
+      </div>
+    </footer>
+  </form>
+</dialog>
 
 <footer>&copy; 2026 Jared Harper</footer>
 
@@ -562,6 +745,79 @@
         }
       });
     });
+  })();
+</script>
+<script>
+  (function () {
+    var TO = 'jared.harper16@gmail.com';
+    var dlg = document.getElementById('intake'), form = document.getElementById('intake-form');
+    var step = 1, last = 4;
+    var $ = function (id) { return document.getElementById(id); };
+    function picked(id) { return Array.prototype.map.call(document.querySelectorAll('#' + id + ' input:checked'), function (i) { return i.value; }); }
+    function show(n) {
+      step = n;
+      form.querySelectorAll('.step').forEach(function (el) { el.hidden = Number(el.dataset.step) !== n; });
+      form.querySelectorAll('.progress span').forEach(function (b, i) { b.classList.toggle('on', i < n); });
+      $('q-back').hidden = n === 1;
+      $('q-next').hidden = n === last;
+      $('q-next').textContent = n === 3 ? 'Create my email' : 'Next';
+      $('q-send').hidden = $('q-copy').hidden = n !== last;
+      $('intake-sub').textContent = n === last ? 'Review it, then send.' : 'Step ' + n + ' of 3. Your answers become an email to me, ready to send.';
+      $('q-err').hidden = true; $('q-copied').hidden = true;
+      var f = form.querySelector('.step[data-step="' + n + '"] input, .step[data-step="' + n + '"] textarea');
+      if (f) f.focus();
+    }
+    function fail(msg, el) { $('q-err').textContent = msg; $('q-err').hidden = false; if (el) el.focus(); return false; }
+    function valid(n) {
+      if (n === 1) {
+        if (!$('q-name').value.trim()) return fail('Add your name so I know who to reply to.', $('q-name'));
+        if (!/^\S+@\S+\.\S+$/.test($('q-email').value.trim())) return fail('Add a valid email address so I can reply.', $('q-email'));
+      }
+      if (n === 2 && $('q-process').value.trim().length < 10) return fail('Describe the process in a sentence or two so I understand the job.', $('q-process'));
+      return true;
+    }
+    function compose() {
+      var sys = picked('q-systems'), tools = picked('q-tools');
+      var co = $('q-company').value.trim();
+      var lines = [
+        'Hi Jared,', '',
+        "I'd like help with a workflow. Here are the details:", '',
+        'Name: ' + $('q-name').value.trim(),
+        'Company: ' + (co || '-'),
+        'Role: ' + ($('q-role').value.trim() || '-'),
+        'Email: ' + $('q-email').value.trim(), '',
+        'THE PROCESS', $('q-process').value.trim(), '',
+        'How often: ' + ($('q-freq').value || '-'),
+        'Time each time: ' + ($('q-time').value || '-'),
+        'What goes wrong: ' + ($('q-pain').value.trim() || '-'), '',
+        'Systems it touches: ' + (sys.join(', ') || '-'),
+        'Automation tools we use: ' + (tools.join(', ') || '-'),
+        'Anything else: ' + ($('q-other').value.trim() || '-'), '',
+        'Thanks,', $('q-name').value.trim()
+      ];
+      var body = lines.join('\n');
+      var subject = 'Workflow help' + (co ? ': ' + co : '');
+      $('q-preview').textContent = 'To: ' + TO + '\nSubject: ' + subject + '\n\n' + body;
+      $('q-send').href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!valid(step)) return;
+      if (step === 3) compose();
+      show(step + 1);
+    });
+    $('q-back').addEventListener('click', function () { show(step - 1); });
+    $('q-copy').addEventListener('click', function () {
+      var t = $('q-preview').textContent;
+      var done = function () { $('q-copied').hidden = false; };
+      var sel = function () { var r = document.createRange(); r.selectNodeContents($('q-preview')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, sel); else sel();
+    });
+    document.querySelectorAll('[data-open-intake]').forEach(function (b) {
+      b.addEventListener('click', function () { show(1); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); });
+    });
+    dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   })();
 </script>
 </body>
